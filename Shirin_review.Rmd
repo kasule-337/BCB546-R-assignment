@@ -1,0 +1,38 @@
+---
+title: "Shirin_review"
+author: "Shirin Parvin"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Hi Faizo,
+
+Great job attempting the assignment! 
+
+Just a few suggestions before I continue with my review of the code. 
+
+a. In the first chunk, you have the `dev.off()` to close the current graphics device. If I execute your .Rmd file using "Run all", this line of code throws an error ***"Error in dev.off() : cannot shut down device 1 (the null device)"***. I do not think including that line of code is crucial for your script. So, perhaps you can remove it to make your code run smoothly.
+
+b. On line 17 of your code you had 4 "`" symbols while all the rest of your code chunks had 3 "`" symbols. Because of this, the "Run all" would not work. Please make sure all your chunks open and close with the same number of "`" symbols. Although this is a minor thing, it is easy to miss this and it can break your code. :)
+
+
+Here are some of my suggestions as part of the review, which may help improve your assignment:
+
+1. Instead of setting up the path to our directory, it might be worth it to upload the `fang_et_al_genotype.txt` and `snp_position.txt` files in your repository, so that your code is not dependent on the person actually having the data files. Just a good practise for coding to have all required files being in the repo.
+
+2. I believe you do not need the following line of code since the snp_position dataframe is already arranged by SNP_ID.
+
+```{r}
+snp_position_arranged <- arrange(snp_position_Chr, SNP_ID)
+```
+
+3. In **"# Data Transposition"** part, it might be a good idea to convert the data into a dataframe using `data.frame()` after using transpose function `t()`, since `t()` converts the dataframe into a matrix, which might later arise issues in using it as a dataframe. Just good practise suggestion.
+
+4. During generating the multiple files, as mentioned in the hint, it might be better to use `lapply()`. If you choose to do so, you can define the arranging and writing parts as a function first and then use `lapply()`. Just makes the code run faster.
+
+5. In the Data Visualisation part, for "# Missing data and amount of homozygous,heterozygous and missing" section, you might need to replot it, since the question expects the plot to be a stacked plot, and for each individual sample and not overall.
+
