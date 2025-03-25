@@ -5,12 +5,12 @@ date: "2025-03-20"
 output: html_document
 ---
 
-````{r}
+```{r}
 # Load necessary library
 library(readr)
 ```
 
-````{r}
+```{r}
 # Define GitHub raw URLs for the files
 genotypes_url <- "https://raw.githubusercontent.com/kasule-337/BCB546-R-assignment/main/fang_et_al_genotypes.txt"
 snp_position_url <- "https://raw.githubusercontent.com/kasule-337/BCB546-R-assignment/main/snp_position.txt"
@@ -28,7 +28,7 @@ fang_et_al_genotypes <- read_tsv(genotypes_file)
 snp_position <- read_tsv(snp_position_file)
 ```
 
-````{r}
+```{r}
 ## Load required libraries
 library(dplyr)
 library(tidyr)
